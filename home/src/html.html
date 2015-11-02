@@ -1,0 +1,71 @@
+<html lang="en" ng-app="StarterApp">
+  <head>
+    <script type="text/javascript">
+      window.data = ${ jvar_data };
+    </script>
+    <link rel="stylesheet" href="https://cdn.gitcdn.xyz/cdn/angular/bower-material/v1.0.0-rc2/angular-material.css"></link>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic"></link>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
+    <meta name="viewport" content="initial-scale=1" />
+  </head>
+  <body ng-controller="AppCtrl">
+    <style>
+      .md-toolbar-tools h1 {
+        font-size: inherit;
+        font-weight: inherit;
+        margin: inherit;
+      }
+
+    </style>
+
+    <md-toolbar class="md-tall" layout="column">
+      <div class="md-toolbar-tools">
+        <md-button ng-click="" hide-gt-sm="hide-gt-sm" class="md-icon-button">
+          <md-icon aria-label="Menu" class="material-icon">menu</md-icon>
+        </md-button>
+        <div flex="flex" />
+        <md-button class="md-icon-button" href="/nav_to.do?uri=%2Fsn_idea_management_idea_space_list.do" target="_blank">
+          <md-icon class="material-icons">open_in_new</md-icon>
+        </md-button>
+      </div>
+      <div class="md-toolbar-tools md-toolbar-tools-bottom">
+        <h1>Idea Spaces</h1>
+      </div>
+    </md-toolbar>
+    <div layout="row" layout-wrap="layout-wrap">
+      <div flex="flex"></div>
+      <div flex="66" layout="row" layout-padding="layout-padding">
+        <md-card flex="50" layout="row" ng-repeat="space in spaces">
+        <md-card-content flex="20" class="card-left" style="background-color: #AB47BC;"><div class="md-accent" /></md-card-content>
+          <div layout="column" flex="80">
+          <md-card-content>
+            <div layout="row">
+              <h2>{{ space.title }}</h2>
+              <div flex="flex" />
+              <md-button class="md-icon-button launch" href="/sn_idea_management_space.do?sysparm_sys_id={{space.sys_id}}">
+                <md-icon class="material-icons">open_in_new</md-icon>
+              </md-button>
+            </div>
+            <p>{{ space.description }}</p>
+          </md-card-content>
+          <md-card-footer>
+            <ng-pluralize count="space.idea_count"
+                          when="{'0': 'No Ideas',
+                               'one': '1 Idea',
+                               'other': '{} Ideas'}">
+            </ng-pluralize>
+          </md-card-footer>
+        </div>
+        </md-card>
+      </div>
+      <div flex="flex"></div>
+    </div>
+
+    <!-- Angular Material Dependencies -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-aria.min.js"></script>
+
+  <script src="https://cdn.gitcdn.xyz/cdn/angular/bower-material/v1.0.0-rc2/angular-material.js"></script>
+  </body>
+</html>
